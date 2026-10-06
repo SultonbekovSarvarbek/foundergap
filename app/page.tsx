@@ -272,6 +272,17 @@ export default function Home() {
 
       <footer className="border-t border-line py-12 text-center text-sm text-muted">
         <Image src="/logo-white.png" alt="Founder Gap" width={963} height={516} className="mx-auto mb-5 h-14 w-auto opacity-80" />
+        <p className="mb-3 text-foreground">
+          {t.contact}{" "}
+          <a
+            href="https://t.me/s_sarvar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-accent underline-offset-4 hover:underline"
+          >
+            @s_sarvar
+          </a>
+        </p>
         {t.footer}
       </footer>
     </div>

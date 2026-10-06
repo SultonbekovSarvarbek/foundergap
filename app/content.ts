@@ -30,6 +30,7 @@ type Copy = {
     error: string;
   };
   footer: string;
+  contact: string;
 };
 
 export const content: Record<Lang, Copy> = {
@@ -98,6 +99,7 @@ export const content: Record<Lang, Copy> = {
       error: "Не удалось отправить. Проверьте поля и попробуйте ещё раз.",
     },
     footer: "© Founder Gap. Подкаст о фаундерах и венчурных деньгах.",
+    contact: "Есть вопросы? Пишите в Telegram",
   },
   en: {
     nav: { about: "About", topics: "Topics", guests: "Guests", apply: "Be a guest" },
@@ -164,6 +166,7 @@ export const content: Record<Lang, Copy> = {
       error: "Couldn't send. Check the fields and try again.",
     },
     footer: "© Founder Gap. A podcast about founders and venture money.",
+    contact: "Questions? Message us on Telegram",
   },
   uz: {
     nav: { about: "Подкаст ҳақида", topics: "Мавзулар", guests: "Меҳмонлар", apply: "Меҳмон бўлиш" },
@@ -230,5 +233,6 @@ export const content: Record<Lang, Copy> = {
       error: "Юбориб бўлмади. Майдонларни текшириб, қайта уриниб кўринг.",
     },
     footer: "© Founder Gap. Асосчилар ва венчур пуллар ҳақида подкаст.",
+    contact: "Саволингиз борми? Telegram’да ёзинг",
   },
 };
