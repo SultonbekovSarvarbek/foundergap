@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07070a;
+  --foreground: #f3f3f1;
+  --muted: #8d8d96;
+  --line: #1f1f26;
+  --card: #0e0e13;
+  --accent: #c6ff3d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+.glow {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(198, 255, 61, 0.14), transparent 70%),
+    radial-gradient(40% 40% at 85% 20%, rgba(120, 90, 255, 0.12), transparent 70%);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+}
+
+@keyframes bar {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes word {
+  from { transform: translateY(115%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.word {
+  display: inline-block;
+  animation: word 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.rise {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Card spotlight that follows the mouse */
+.spot {
+  position: relative;
+}
+
+.spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(198, 255, 61, 0.11), transparent 60%);
+}
+
+.spot:hover::after {
+  opacity: 1;
+}
+
+[data-magnetic] {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s, filter 0.2s, border-color 0.2s;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+/* Custom cursor (mouse devices only, class set from JS) */
+.cursor-dot,
+.cursor-ring,
+.pointer-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cursor-dot.on,
+.cursor-ring.on,
+.pointer-glow.on {
+  opacity: 1;
+}
+
+html:not(.has-cursor) .cursor-dot,
+html:not(.has-cursor) .cursor-ring,
+html:not(.has-cursor) .pointer-glow {
+  display: none;
+}
+
+.cursor-dot {
+  z-index: 100;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: opacity 0.3s, width 0.25s, height 0.25s, margin 0.25s;
+}
+
+.cursor-dot.hot {
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.cursor-ring {
+  z-index: 99;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1.5px solid rgba(198, 255, 61, 0.7);
+  border-radius: 999px;
+  transition:
+    opacity 0.3s,
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s,
+    border-radius 0.3s;
+}
+
+.cursor-ring.hot {
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  background: rgba(198, 255, 61, 0.14);
+  border-color: var(--accent);
+}
+
+.cursor-ring.text {
+  width: 3px;
+  height: 28px;
+  margin: -14px 0 0 -1.5px;
+  border-radius: 2px;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cursor-ring.down {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  background: rgba(198, 255, 61, 0.25);
+}
+
+.cursor-ring.hot.down {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+}
+
+.pointer-glow {
+  z-index: 1;
+  width: 640px;
+  height: 640px;
+  margin: -320px 0 0 -320px;
+  background: radial-gradient(circle, rgba(198, 255, 61, 0.07), transparent 65%);
+  transition: opacity 0.6s;
+}
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word, .rise { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .progress { display: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Submit button: light sweep + glow instead of magnetic motion */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow 0.4s, transform 0.2s;
+}
+
+.btn-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 45%;
+  transform: translateX(-130%) skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+}
+
+.btn-shine:hover:not(:disabled)::before {
+  transform: translateX(300%) skewX(-20deg);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-shine:hover:not(:disabled) {
+  box-shadow: 0 0 0 4px rgba(198, 255, 61, 0.15), 0 10px 40px -8px rgba(198, 255, 61, 0.55);
+}
+
+.btn-shine:active:not(:disabled) {
+  transform: scale(0.98);
+}
