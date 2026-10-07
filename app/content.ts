@@ -8,7 +8,7 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 type Copy = {
   nav: { about: string; topics: string; guests: string; apply: string };
-  hero: { badge: string; title1: string; title2: string; sub: string; cta: string; cta2: string };
+  hero: { badge: string; title1: string; title2: string; accent: string; sub: string; cta: string; cta2: string };
   stats: { value: string; label: string }[];
   about: { title: string; text: string; points: { t: string; d: string }[] };
   topics: { title: string; items: { t: string; d: string }[] };
@@ -38,8 +38,9 @@ export const content: Record<Lang, Copy> = {
     nav: { about: "О подкасте", topics: "Темы", guests: "Гости", apply: "Стать гостем" },
     hero: {
       badge: "Скоро · первый сезон",
-      title1: "Как фаундеры договариваются",
-      title2: "с инвесторами",
+      title1: "Как стартапы получают",
+      title2: "своё",
+      accent: "первое «да»",
       sub: "Founder Gap — подкаст о том, как основатели стартапов привлекают венчурные инвестиции. Разбираем их опыт: как проходили встречи с фондами, почему приходили отказы и о каких условиях удалось договориться. Отдельно говорим о том, что происходит между «мы готовы инвестировать» и переводом денег.",
       cta: "Стать гостем подкаста",
       cta2: "О чём подкаст",
@@ -105,8 +106,9 @@ export const content: Record<Lang, Copy> = {
     nav: { about: "About", topics: "Topics", guests: "Guests", apply: "Be a guest" },
     hero: {
       badge: "Coming soon · Season one",
-      title1: "How founders negotiate",
-      title2: "with investors",
+      title1: "How startups get",
+      title2: "their",
+      accent: "first “yes”",
       sub: "Founder Gap is a podcast about how startup founders raise venture funding. We go through their experience: how meetings with funds went, why rejections came, and which terms they managed to agree on. We also talk about what happens between “we're ready to invest” and the money actually arriving.",
       cta: "Become a guest",
       cta2: "What it's about",
@@ -172,8 +174,9 @@ export const content: Record<Lang, Copy> = {
     nav: { about: "Подкаст ҳақида", topics: "Мавзулар", guests: "Меҳмонлар", apply: "Меҳмон бўлиш" },
     hero: {
       badge: "Тез орада · биринчи мавсум",
-      title1: "Асосчилар инвесторлар билан",
-      title2: "қандай келишади",
+      title1: "Стартаплар қандай олади",
+      title2: "ўзининг",
+      accent: "биринчи «ҳа»сини",
       sub: "Founder Gap - стартап асосчилари венчур инвестицияларни қандай жалб қилиши ҳақида подкаст. Уларнинг тажрибасини таҳлил қиламиз: фондлар билан учрашувлар қандай ўтгани, нега рад жавоблари келгани ва қандай шартларга келишилгани. Алоҳида «инвестиция киритишга тайёрмиз» деган сўздан пул ўтказилгунга қадар нима бўлишини гаплашамиз.",
       cta: "Подкаст меҳмони бўлиш",
       cta2: "Подкаст нима ҳақида",

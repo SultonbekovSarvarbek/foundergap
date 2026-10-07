@@ -112,8 +112,12 @@ export default function Home() {
             <h1 key={lang} className="max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-7xl">
               <Words text={t.hero.title1} start={1} />
               <br />
+              <Words text={t.hero.title2} start={t.hero.title1.split(" ").length + 1} />
               <span className="text-accent">
-                <Words text={t.hero.title2} start={t.hero.title1.split(" ").length + 1} />
+                <Words
+                  text={t.hero.accent}
+                  start={t.hero.title1.split(" ").length + t.hero.title2.split(" ").length + 1}
+                />
               </span>
             </h1>
             <p className="rise mt-8 max-w-2xl text-lg leading-relaxed text-muted" style={{ animationDelay: "700ms" }}>
