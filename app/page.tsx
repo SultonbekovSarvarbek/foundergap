@@ -109,7 +109,7 @@ export default function Home() {
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
               {t.hero.badge}
             </div>
-            <h1 key={lang} className="max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
+            <h1 key={lang} className="max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-7xl">
               <Words text={t.hero.title1} start={1} />
               <br />
               <span className="text-accent">
@@ -146,7 +146,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl divide-y divide-line px-5 md:grid-cols-3 md:divide-x md:divide-y-0">
             {t.stats.map((s, i) => (
               <div key={s.label} className="reveal py-8 md:px-8 md:first:pl-0" style={d(i)}>
-                <div className="font-mono text-3xl font-semibold text-accent">{s.value}</div>
+                <div className="font-mono text-2xl font-semibold text-accent lg:text-3xl">{s.value}</div>
                 <div className="mt-1 text-sm text-muted">{s.label}</div>
               </div>
             ))}
