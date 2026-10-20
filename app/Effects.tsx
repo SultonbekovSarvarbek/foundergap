@@ -33,9 +33,25 @@ export default function Effects() {
       },
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
     );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    const watch = (el: Element) => {
+      if (!el.classList.contains("in")) io.observe(el);
+    };
+    document.querySelectorAll(".reveal").forEach(watch);
+
+    // Elements re-created after a language switch need observing too
+    const mo = new MutationObserver((muts) => {
+      for (const m of muts) {
+        m.addedNodes.forEach((n) => {
+          if (!(n instanceof Element)) return;
+          if (n.matches(".reveal")) watch(n);
+          n.querySelectorAll(".reveal").forEach(watch);
+        });
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      mo.disconnect();
       window.removeEventListener("scroll", onScroll);
       io.disconnect();
     };

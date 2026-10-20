@@ -149,7 +149,7 @@ export default function Home() {
         <section className="border-y border-line">
           <div className="mx-auto grid max-w-6xl divide-y divide-line px-5 md:grid-cols-3 md:divide-x md:divide-y-0">
             {t.stats.map((s, i) => (
-              <div key={s.label} className="reveal py-8 md:px-8 md:first:pl-0" style={d(i)}>
+              <div key={i} className="reveal py-8 md:px-8 md:first:pl-0" style={d(i)}>
                 <div className="font-mono text-2xl font-semibold text-accent lg:text-3xl">{s.value}</div>
                 <div className="mt-1 text-sm text-muted">{s.label}</div>
               </div>
@@ -163,7 +163,7 @@ export default function Home() {
           <p className="reveal mt-6 max-w-2xl text-lg text-muted" style={d(1)}>{t.about.text}</p>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {t.about.points.map((p, i) => (
-              <div key={p.t} className="reveal spot rounded-2xl border border-line bg-card p-7 transition-colors hover:border-accent/40" style={d(i)}>
+              <div key={i} className="reveal spot rounded-2xl border border-line bg-card p-7 transition-colors hover:border-accent/40" style={d(i)}>
                 <div className="font-mono text-sm text-accent">0{i + 1}</div>
                 <h3 className="mt-4 text-xl font-semibold">{p.t}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{p.d}</p>
@@ -178,7 +178,7 @@ export default function Home() {
             <h2 className="reveal text-4xl font-semibold tracking-tight md:text-5xl">{t.topics.title}</h2>
             <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
               {t.topics.items.map((it, i) => (
-                <div key={it.t} className="reveal spot bg-background p-7 transition-colors hover:bg-card" style={d(i, 70)}>
+                <div key={i} className="reveal spot bg-background p-7 transition-colors hover:bg-card" style={d(i, 70)}>
                   <h3 className="text-lg font-semibold">{it.t}</h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-muted">{it.d}</p>
                 </div>
@@ -196,7 +196,7 @@ export default function Home() {
             </div>
             <ul className="space-y-4">
               {t.guests.items.map((it, i) => (
-                <li key={it} className="reveal spot flex gap-4 rounded-2xl border border-line bg-card p-5 transition-colors hover:border-accent/40" style={d(i + 1)}>
+                <li key={i} className="reveal spot flex gap-4 rounded-2xl border border-line bg-card p-5 transition-colors hover:border-accent/40" style={d(i + 1)}>
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-black">
                     ✓
                   </span>
